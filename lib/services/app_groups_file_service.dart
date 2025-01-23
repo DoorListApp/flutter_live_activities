@@ -50,7 +50,7 @@ class AppGroupsFileService {
         await _processImageFileOperations(file, value.imageOptions!);
       }
 
-      final finalDestination = '${appGroupFiles.path}/${value.fileName}';
+      final finalDestination = '${appGroupFiles.path}/$randomFileName';
       file.copySync(finalDestination);
 
       data[key] = finalDestination;
