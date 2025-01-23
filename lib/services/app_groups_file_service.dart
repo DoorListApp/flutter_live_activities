@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter_app_group_directory/flutter_app_group_directory.dart';
 import 'package:live_activities/models/live_activity_file.dart';
@@ -40,7 +41,9 @@ class AppGroupsFileService {
       appGroupFiles.createSync();
 
       final bytes = await value.loadFile();
-      File file = await File('${tempDir.path}/${value.fileName}').create()
+      final random = Random();
+      final randomFileName = random.nextInt(1000) + 1;
+      File file = await File('${tempDir.path}/$randomFileName').create()
         ..writeAsBytesSync(bytes);
 
       if (value.imageOptions != null) {
